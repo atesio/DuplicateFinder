@@ -1,0 +1,23 @@
+﻿<Window x:Class="DuplicateFinder.FormDeletionErrors"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DuplicateFinder"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        mc:Ignorable="d"
+        Title="Deletion errors" Height="246.453" Width="512.815" Icon="Icons/delete.png">
+    <Grid>
+        <dxg:GridControl x:Name="GridMessages" EnableSmartColumnsGeneration="True" AllowLiveDataShaping="False" AllowColumnMRUFilterList="False" AllowMRUFilterList="False" IsFilterEnabled="False" ShowAllTableValuesInCheckedFilterPopup="False" >
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Path" Header="Path" />
+                <dxg:GridColumn FieldName="Message" Header="Message" />
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView AllowPerPixelScrolling="True" AllowBandMoving="False" AllowBandResizing="False" ShowBandsPanel="False" ShowBandsInCustomizationForm="False" ShowGroupPanel="False" AllowConditionalFormattingManager="False" AllowMasterDetail="False">
+                </dxg:TableView>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</Window>
