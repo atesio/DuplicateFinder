@@ -12,7 +12,7 @@
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
         x:Class="DuplicateFinder.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Duplicate finder" Height="350" Width="525" Icon="Icons/bookmarks.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
