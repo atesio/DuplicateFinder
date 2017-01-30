@@ -122,13 +122,23 @@ namespace DuplicateFinder
             TextSelectionSize.Text = HumanReadableFileSize.GetReadableSize(_selectedSize);
         }
 
+
+        private void ButtonMoveToTrash_OnClick(object sender, RoutedEventArgs e)
+        {
+            DeleteFiles(true);
+        }
         private void ButtonDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            var deleter = new FileDeleter();
+            DeleteFiles(false);
+        }
+
+        public void DeleteFiles(bool moveToTrash)
+        {
+            var deleter = new FileDeleter(moveToTrash);
             var dupes = GridResults.ItemsSource as DuplicateFiles;
             if (dupes == null) return;
             var selected = dupes.Where(f => f.MarkedForDeletion);
-            deleter.AddFiles(selected.Select(dupe=>dupe.Path));
+            deleter.AddFiles(selected.Select(dupe => dupe.Path));
             deleter.Start(Progress);
             var deletedFiles = (from item in deleter.Results where string.IsNullOrEmpty(item.Message) select item).ToList();
             foreach (var deletedFile in deletedFiles)
@@ -144,7 +154,6 @@ namespace DuplicateFinder
                 form.ShowDialog();
             }
         }
-
         private void TableView_CellValueChanged_DeleteIfEmpty(object sender, DevExpress.Xpf.Grid.CellValueChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.Value as string))
@@ -218,5 +227,6 @@ namespace DuplicateFinder
                 ChangeSelectedSize(f, true);
             }
         }
+
     }
 }
